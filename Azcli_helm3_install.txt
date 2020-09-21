@@ -13,3 +13,44 @@ D:\helm3\windows-amd64\helm.exe repo add stable https://kubernetes-charts.storag
 
 D:\helm3\windows-amd64\helm.exe repo update
 
+
+################ go back follow the walk through blog################################ 
+
+
+############ rmb to change the res grp to centralus as I created in that region
+MC_djangoAKS_djangoaks-cluster_centralus
+
+az network public-ip create --resource-group MC_djangoAKS_djangoaks-cluster_centralus --name djangoAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAdress -o tsv
+
+az network public-ip show --resource-group MC_djangoAKS_djangoaks-cluster_centralus --name djangoAKSPublicIP
+
+"id": "/subscriptions/93442867-925d-475e-988a-5bca355faa1f/resourceGroups/MC_djangoAKS_djangoaks-cluster_centralus/providers/Microsoft.Network/publicIPAddresses/djangoAKSPublicIP",
+  "idleTimeoutInMinutes": 4,
+  "ipAddress": "20.37.140.100",
+  "ipConfiguration": null,
+  "ipTags": [],
+  
+  
+  
+ D:\helm3\windows-amd64\helm.exe install nginx-ingress stable/nginx-ingress --namespace djaks --set controller.replicaCount=2 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.loadBalancerIP="20.37.140.100" --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="django-aks-ingress"
+ 
+ 
+ kubectl --namespace djaks get services -o wide -w nginx-ingress-controller
+ 
+ az network public-ip list --resource-group MC_djangoAKS_djangoaks-cluster_centralus --query "[?name=='djangoAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+ 
+ 
+ D:\helm3\windows-amd64\helm.exe repo add jetstack https://charts.jetstack.io
+ 
+ D:\helm3\windows-amd64\helm.exe install  cert-manager jetstack/cert-manager  --namespace djaks  --version v0.15.1   --set installCRDs=true
+ 
+ 
+ ########### for the yaml to get in kube we must cd to  the yaml path
+ cd D:\dockerTest2_Ingres_tls\k8s
+  kubectl apply -f cluster-issuer.yaml --namespace djaks
+ 
+ kubectl set image deployment django-web-app django-web-container=djangoaksregistry.azurecr.io/django-aks:v1.2 --namespace djaks
+ 
+ 
+ 
+ 
