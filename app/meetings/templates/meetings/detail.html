@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+ .rainbow {
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    font-size:29px;
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+
+        <span class="rainbow"> Meeting: {{meeting.title}}</span>
+</head>
+<h1>
+    {{meeting.title}}
+
+</h1>
+<p>
+    The mtg is on {{meeting.date}} at {{meeting.start_time}}
+    in <strong> {{meeting.room}}</strong>
+
+</p>
+
+    <a href=" {% url 'welcome' %} ">home</a>
+
+<body>
+
+</body>
+</html>

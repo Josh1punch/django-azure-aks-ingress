@@ -1,0 +1,15 @@
+az aks create --resource-group djangoAKS --name djangoaks-cluster --node-count 2 --node-vm-size Standard_B2s --generate-ssh-keys –-kubernetes-version 1.18.8
+
+############### INSTALL of HELM3
+https://helm.sh/docs/intro/install/ 
+
+download the windows amd version and extract in a D:\ folder.
+
+Now in the folder it contains exe file which is helm itself
+
+now the 2 cmds use to fully install and update
+
+D:\helm3\windows-amd64\helm.exe repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+D:\helm3\windows-amd64\helm.exe repo update
+

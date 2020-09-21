@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - django-aks-ingress.westeurope.cloudapp.azure.com
+    - django-aks-ingress.centralus.cloudapp.azure.com
     secretName: tls-secret
   rules:
-  - host: django-aks-ingress.westeurope.cloudapp.azure.com
+  - host: django-aks-ingress.centralus.cloudapp.azure.com
     http:
       paths:
       - backend:
