@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+#from website.views import welcome,date,about
+#from meetings.views import detail,roomdetail
 urlpatterns = [
     path('', include('frontend.urls')),
+    # path('', include('meetings.urls')),
     path('admin/', admin.site.urls),
+    # path ('rooms',views.roomdetail,name="rooms"),
+    # path ('date',views.date),
+    # path ('about',views.about,name="about"),
+    # path ('meetings/<int:id>',views.detail),
+    
 ]
 
 urlpatterns += staticfiles_urlpatterns()

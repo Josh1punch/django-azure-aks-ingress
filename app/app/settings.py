@@ -20,12 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'CHooseYourProductionSecretKey'
+SECRET_KEY = 'IdontwantyoutoRememberWh@tIputH3r3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['django-aks-ingress.centralus.cloudapp.azure.com']
+ALLOWED_HOSTS = ['django-aks-ingress.centralus.cloudapp.azure.com',
+'django-aks-ingress.centralus.cloudapp.azure.com/admin/login/?next=/admin/',
+'django-aks-ingress.centralus.cloudapp.azure.com']#,'localhost','127.0.0.1']
 
 # Application definition
 
